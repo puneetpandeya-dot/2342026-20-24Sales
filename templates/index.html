@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analytics Pro - Weekly Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sales Analytics Pro</h1>
+            <p>Upload your sales data to generate comprehensive weekly reports.</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="upload-card" id="drop-zone">
+                <input type="file" id="file-input" hidden accept=".csv">
+                <div class="upload-content">
+                    <span class="icon">📊</span>
+                    <h3>Upload Sales CSV</h3>
+                    <p>Drag and drop your file here or click to browse</p>
+                </div>
+            </div>
+            <div id="file-info" class="file-info hidden">
+                <span id="filename"></span>
+                <button id="process-btn" class="btn primary">Generate Report</button>
+            </div>
+        </section>
+
+        <div id="loader" class="loader-container hidden">
+            <div class="spinner"></div>
+            <p>Analyzing data...</p>
+        </div>
+
+        <main id="results" class="hidden">
+            <section class="summary-grid">
+                <div class="summary-card">
+                    <span class="label">Total Revenue</span>
+                    <h2 id="total-revenue">$0.00</h2>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Total Orders</span>
+                    <h2 id="total-orders">0</h2>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Total Customers</span>
+                    <h2 id="total-customers">0</h2>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Top Product</span>
+                    <h2 id="top-product" class="small-text">N/A</h2>
+                </div>
+            </section>
+
+            <section class="highlights-section">
+                <h3>Key Highlights</h3>
+                <ul id="highlights-list"></ul>
+            </section>
+
+            <section class="report-section">
+                <h3>Weekly Performance</h3>
+                <div class="table-container">
+                    <table id="report-table">
+                        <thead>
+                            <tr>
+                                <th>Week Starting</th>
+                                <th>Revenue</th>
+                                <th>Orders</th>
+                                <th>Customers</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
